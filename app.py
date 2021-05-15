@@ -65,7 +65,7 @@ def predict_rent(data:value):
     lift= data['lift']
     swimmingPool= data['swimmingPool']
     location= data['location']
-    deviceid = data['Deviceid']
+    deviceid = data['deviceid']
     prediction = int(get_estimated_price(property_size,bhk,property_age,gym,lift,swimmingPool,location))
     
     endpoint='https://api.airtable.com/v0/appnaWXwqsABs8iyJ/Table%201'
