@@ -70,21 +70,6 @@ def predict_rent(data:value):
     
     endpoint='https://api.airtable.com/v0/appnaWXwqsABs8iyJ/Table%201'
     headers = {"Authorization": "Bearer key5g3yXFYHMFX4R0","Content-Type": "application/json"}
-    if gym == 1:
-        gym = 'yes'
-    else:
-        gym = 'no'
-
-    if lift ==1:
-        lift ='yes'
-    else:
-        lift ='no'
-
-    if swimmingPool == 1:
-        swimmingPool = 'yes'
-    else:
-        swimmingPool = 'no'
-
     data = {"records": [{"fields": {"property size": property_size,"bhk": bhk,"property age": property_age,"gym": gym,"lift": lift,"swimmingPool": swimmingPool,"location":location,"prediction":prediction,"Deviceid":Deviceid}}]}
     r = requests.post(endpoint, json=data, headers=headers)
     return {
