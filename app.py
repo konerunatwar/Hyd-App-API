@@ -80,7 +80,7 @@ def predict_rent(data:value):
     data = {"records": [{"fields": {"propertysize": property_size,"bhk": bhk,"propertyage": property_age,"gym": gym,"lift": lift,"swimmingPool": swimmingPool,"location":location,"prediction":prediction,"deviceid":deviceid}}]}
     r = requests.post(endpoint, json=data, headers=headers)
     
-    time.sleep(5)
+    time.sleep(1)
     
     return {
         'prediction': prediction
