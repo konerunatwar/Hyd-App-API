@@ -72,6 +72,12 @@ def predict_rent(data:value):
     headers = {"Authorization": "Bearer key5g3yXFYHMFX4R0","Content-Type": "application/json"}
     data = {"records": [{"fields": {"propertysize": property_size,"bhk": bhk,"propertyage": property_age,"gym": gym,"lift": lift,"swimmingPool": swimmingPool,"location":location,"prediction":prediction,"deviceid":deviceid}}]}
     r = requests.post(endpoint, json=data, headers=headers)
+    
+    endpoint='https://api.airtable.com/v0/appnaWXwqsABs8iyJ/table2'
+    headers = {"Authorization": "Bearer key5g3yXFYHMFX4R0","Content-Type": "application/json"}
+    data = {"records": [{"fields": {"propertysize": property_size,"bhk": bhk,"propertyage": property_age,"gym": gym,"lift": lift,"swimmingPool": swimmingPool,"location":location,"prediction":prediction,"deviceid":deviceid}}]}
+    r = requests.post(endpoint, json=data, headers=headers)
+    
     return {
         'prediction': prediction
     }
