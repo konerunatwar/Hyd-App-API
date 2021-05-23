@@ -1,5 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from values import value
 import numpy as np
 import pickle
@@ -9,6 +10,18 @@ import requests
 import time
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 pickle_in = open("hyd_prices.pickle","rb")
 model=pickle.load(pickle_in)
 f = open('columns.json',)
@@ -25,21 +38,21 @@ def get_estimated_price(property_size,bhk,property_age,gym,lift,swimmingPool,loc
     x[1] = bhk
     x[2] = property_age
     
-    if gym == 'no':
+    if gym == 'false':
         gym=0
-    if gym == 'yes':
+    if gym == 'true':
         gym=1
     x[3] = gym
     
-    if lift == 'no':
+    if lift == 'false':
         lift=0
-    if lift == 'yes':
+    if lift == 'true':
         lift=1
     x[4] = lift
     
-    if swimmingPool == 'no':
+    if swimmingPool == 'false':
         swimmingPool=0
-    if swimmingPool == 'yes':
+    if swimmingPool == 'true':
         swimmingPool=1
     x[5] = swimmingPool
     
