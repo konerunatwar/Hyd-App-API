@@ -38,26 +38,26 @@ def get_estimated_price(property_size,bhk,property_age,gym,lift,swimmingPool,loc
     x[1] = bhk
     x[2] = property_age
     
-    if gym == 'false':
+    if gym == 'False':
         gym=0
         x[3] = gym
-    if gym == 'true':
+    if gym == 'True':
         gym=1
         x[3] = gym
     
     
-    if lift == 'false':
+    if lift == 'False':
         lift=0
         x[4] = lift
-    if lift == 'true':
+    if lift == 'True':
         lift=1
         x[4] = lift
     
     
-    if swimmingPool == 'false':
+    if swimmingPool == 'False':
         swimmingPool=0
         x[5] = swimmingPool
-    if swimmingPool == 'true':
+    if swimmingPool == 'True':
         swimmingPool=1
         x[5] = swimmingPool
   
