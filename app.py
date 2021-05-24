@@ -40,22 +40,27 @@ def get_estimated_price(property_size,bhk,property_age,gym,lift,swimmingPool,loc
     
     if gym == 'false':
         gym=0
+        x[3] = gym
     if gym == 'true':
         gym=1
-    x[3] = gym
+        x[3] = gym
+    
     
     if lift == 'false':
         lift=0
+        x[4] = lift
     if lift == 'true':
         lift=1
-    x[4] = lift
+        x[4] = lift
+    
     
     if swimmingPool == 'false':
         swimmingPool=0
+        x[5] = swimmingPool
     if swimmingPool == 'true':
         swimmingPool=1
-    x[5] = swimmingPool
-    
+        x[5] = swimmingPool
+  
     x[loc_index] = 1
     less = round(model.predict([x])[0],2)
     if less>= 35000 and bhk >= 3 and property_size >=2500 :
