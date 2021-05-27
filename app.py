@@ -7,7 +7,7 @@ import pickle
 import pandas as pd
 import json
 import requests
-import time
+
 
 app = FastAPI()
 
@@ -84,22 +84,10 @@ def predict_rent(data:value):
     lift= data['lift']
     swimmingPool= data['swimmingPool']
     location= data['location']
-    deviceid = data['deviceid']
+    
     
     prediction = int(get_estimated_price(property_size,bhk,property_age,gym,lift,swimmingPool,location))
-    
-    endpoint='https://api.airtable.com/v0/appnaWXwqsABs8iyJ/Table%201'
-    headers = {"Authorization": "Bearer key5g3yXFYHMFX4R0","Content-Type": "application/json"}
-    data = {"records": [{"fields": {"propertysize": property_size,"bhk": bhk,"propertyage": property_age,"gym": gym,"lift": lift,"swimmingPool": swimmingPool,"location":location,"prediction":prediction,"deviceid":deviceid}}]}
-    r = requests.post(endpoint, json=data, headers=headers)
-    
-    endpoint='https://api.airtable.com/v0/appnaWXwqsABs8iyJ/table2'
-    headers = {"Authorization": "Bearer key5g3yXFYHMFX4R0","Content-Type": "application/json"}
-    data = {"records": [{"fields": {"propertysize": property_size,"bhk": bhk,"propertyage": property_age,"gym": gym,"lift": lift,"swimmingPool": swimmingPool,"location":location,"prediction":prediction,"deviceid":deviceid}}]}
-    r = requests.post(endpoint, json=data, headers=headers)
-    
-    time.sleep(1)
-    
+   
     return {
         'prediction': prediction
     }
